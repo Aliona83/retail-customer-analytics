@@ -2,10 +2,8 @@
 # Retail analytics capstone project
 
 # Retail Customer Analytics
-
 ---
 
-# Retail Customer Analytics
 ### A Machine Learning Approach
 
 ---
@@ -51,7 +49,7 @@ to explore the results — no coding needed!
 
 ---
 
-## How the app works
+### How the app works
 
 ---
 
@@ -63,7 +61,7 @@ to explore the results — no coding needed!
 
 ---
 
-## Data used
+### Data used
 | File | What it contains | Number of rows |
 |------|-----------------|----------------|
 | Online Retail Sales Data.csv | All customer purchases in 2023 | 337,321 |
@@ -270,5 +268,39 @@ Using 0.404 instead of 0.5 gives us:
 - Customers with more complaints respond less
 - The model works better than random guessing
 - Best threshold is 0.404 not the default 0.5
+
+### Comparing Train vs Test Results
+
+I checked if the model works the same way on data 
+it has never seen before (test data).
+
+| Data | AUC Score |
+|------|-----------|
+| Train | 0.674 |
+| Test | 0.637 |
+| Difference | 0.037 |
+
+A small difference (under 0.05) means the model is 
+**not overfitting** — it works well on new data too! 
+
+![ROC Train vs Test](images/roc_train_vs_test.png)
+
+---
+
+### Testing the Best Threshold on Test Data
+
+I used the best threshold (0.404) on the test data 
+to see how well it really performs.
+
+![Confusion Matrix Test](images/confusion_matrix_test.png)
+
+| Metric | Train (threshold 0.5) | Test (threshold 0.404) |
+|--------|------------------------|--------------------------|
+| Sensitivity | 0.403 | 0.566 |
+| Specificity | 0.815 | 0.647 |
+
+Using the best threshold instead of the default 0.5 
+helped the model find **57% of customers** who will respond, 
+compared to only 40% before. This is a big improvement!
 
 
