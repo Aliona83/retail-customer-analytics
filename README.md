@@ -150,7 +150,7 @@ to predict yes or no answers.
 
 ### How I built the model
 
-**Step 1 — Split the data**
+** Split the data**
 I took all 3,834 customers and split them into two groups:
 - 3,067 customers → used to TEACH the model (80%)
 - 767 customers → used to TEST if model works (20%)
@@ -158,7 +158,7 @@ I took all 3,834 customers and split them into two groups:
 This is like studying from a textbook and then 
 sitting an exam with new questions.
 
-**Step 2 — Choose what to give the model**
+** Choose what to give the model**
 I gave the model 9 pieces of information about each customer:
 
 | Information | What it means |
@@ -173,7 +173,7 @@ I gave the model 9 pieces of information about each customer:
 | n_communications | How many times we contacted them |
 | loyalty | Are they a loyalty member? Yes or No |
 
-**Step 3 — Check features are not too similar**
+** Check features are not too similar**
 I checked that none of the 9 features are 
 saying the same thing twice.
 This check is called VIF (Variance Inflation Factor).
