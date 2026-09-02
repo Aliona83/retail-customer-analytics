@@ -183,15 +183,15 @@ everything is fine and we can use all 9 features!
 
 | Feature | VIF Score | Is it okay? |
 |---------|-----------|-------------|
-| n_communications | 4.79 | ✅ below 5 |
-| nps | 3.43 | ✅ below 5 |
-| n_comp | 3.09 | ✅ below 5 |
-| Purchase_Frequency | 3.08 | ✅ below 5 |
-| Unique_Products | 2.64 | ✅ below 5 |
-| loyalty | 2.22 | ✅ below 5 |
-| Total_Spending | 2.04 | ✅ below 5 |
-| Recency | 1.65 | ✅ below 5 |
-| Avg_Basket_Size | 1.50 | ✅ below 5 |
+| n_communications | 4.79 |  below 5 |
+| nps | 3.43 |  below 5 |
+| n_comp | 3.09 |  below 5 |
+| Purchase_Frequency | 3.08 |  below 5 |
+| Unique_Products | 2.64 |  below 5 |
+| loyalty | 2.22 |  below 5 |
+| Total_Spending | 2.04 |  below 5 |
+| Recency | 1.65 |  below 5 |
+| Avg_Basket_Size | 1.50 |  below 5 |
 
 ---
 
@@ -303,4 +303,133 @@ Using the best threshold instead of the default 0.5
 helped the model find **57% of customers** who will respond, 
 compared to only 40% before. This is a big improvement!
 
+## Phase 4 — Comparing ML Models 
+
+**File:** `notebooks/04_campaign_model.ipynb`
+
+### What is this phase about?
+In this phase I tested 4 different machine learning methods
+and compared them to find the best one.
+
+The goal was simple — which model is best at predicting
+if a customer will say YES to a marketing email?
+
+---
+
+### Before running the models — fixing outliers
+
+Before training the models I found that some customers
+had very extreme values that were confusing the models:
+
+| Feature | Before fix | After fix |
+|---------|------------|-----------|
+| Total Spending | £231,822 max | £16,570 max |
+| Purchase Frequency | 174 max | 27 max |
+| Unique Products | 1,602 max | 343 max |
+| Avg Basket Size | £84,236 max | £1,734 max |
+
+Fixing these extreme values (called outliers) helped
+the models work much better and more fairly!
+
+---
+
+### 4 models I tested
+
+| Model | What it is |
+|-------|------------|
+| Naive Bayes | A simple probability based model |
+| Random Forest | Many decision trees working together |
+| SVM | Finds the best line to separate YES and NO customers |
+| XGBoost | A powerful boosting model that learns from mistakes |
+
+All models used the same 9 features and the same
+80/20 train/test split as Logistic Regression in Phase 3.
+
+---
+
+### Results for each model
+
+**Naive Bayes:**
+| Metric | Train | Test |
+|--------|-------|------|
+| AUC | 0.683 | 0.627 |
+| Sensitivity | 0.425 | 0.370 |
+| Specificity | 0.804 | 0.781 |
+| Difference | | 0.056  |
+
+**Random Forest:**
+| Metric | Train | Test |
+|--------|-------|------|
+| AUC | 0.763 | 0.668 |
+| Sensitivity | 0.261 | 0.203 |
+| Specificity | 0.981 | 0.976 |
+| Difference | | 0.095  |
+
+**SVM:**
+| Metric | Train | Test |
+|--------|-------|------|
+| AUC | 0.751 | 0.638 |
+| Sensitivity | 0.408 | 0.338 |
+| Specificity | 0.889 | 0.860 |
+| Difference | | 0.112  |
+
+**XGBoost:**
+| Metric | Train | Test |
+|--------|-------|------|
+| AUC | 0.756 | 0.661 |
+| Sensitivity | 0.387 | 0.331 |
+| Specificity | 0.902 | 0.879 |
+| Difference | | 0.094  |
+
+---
+
+### Final comparison — all 5 models together
+
+| Model | Test AUC | Sensitivity | Specificity | Overfitting? |
+|-------|----------|-------------|-------------|--------------|
+| Logistic Regression | 0.637 | 0.566 | 0.647 | No  |
+| Naive Bayes | 0.627 | 0.370 | 0.781 | No  |
+| Random Forest | **0.668** | 0.203 | 0.976 | No  |
+| SVM | 0.638 | 0.338 | 0.860 | Slight  |
+| XGBoost | 0.661 | 0.331 | 0.879 | No  |
+
+### Charts
+
+**Model Comparison Chart:**
+
+![Model Comparison](images/model_comparison.png)
+
+**Confusion Matrices:**
+
+![Naive Bayes](images/confusion_matrix_nb.png)
+
+![Random Forest](images/confusion_matrix_rf.png)
+
+![SVM](images/confusion_matrix_svm.png)
+
+![XGBoost](images/confusion_matrix_xgb.png)
+
+---
+
+###  Best model — Random Forest
+
+The best model is **Random Forest** with a Test AUC of **0.668**.
+
+This means Random Forest is the best at telling the difference
+between customers who will respond and those who will not.
+
+However — Logistic Regression has the best sensitivity (0.566)
+which means it finds more YES customers than any other model.
+
+For a marketing campaign where finding YES customers is most
+important — Logistic Regression is also a very good choice!
+
+---
+
+### Main findings from Phase 4
+- Random Forest has the highest Test AUC (0.668) — best overall model
+- Logistic Regression finds the most YES customers (sensitivity 0.566)
+- All models perform better than random guessing (AUC > 0.5)
+- Fixing outliers before training was very important
+- No model had serious overfitting after outlier fix
 
