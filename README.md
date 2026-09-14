@@ -463,3 +463,31 @@ Average sentiment score: 0.234 (overall positive)
 ![Sentiment Distribution](images/sentiment_distribution.png)
 ![Keywords](images/sentiment_keywords.png)
 
+
+---
+
+## How to Run the API and Dashboard
+
+### Step 1 — Activate the environment
+Open VS Code terminal and type:
+```bash
+conda activate base
+```
+
+### Step 2 — Go to the api folder
+```bash
+cd api
+```
+
+### Step 3 — Start the API
+```bash
+python -m uvicorn main:app --reload
+```
+
+✅ Models loaded!
+INFO: Uvicorn running on http://127.0.0.1:8000
+
+### Step 4 — Open the dashboard in your browser
+http://localhost:8000/dashboard ← main dashboard
+http://localhost:8000/docs ← API documentation
+http://localhost:8000/health ← check API is running
