@@ -433,3 +433,33 @@ important — Logistic Regression is also a very good choice!
 - Fixing outliers before training was very important
 - No model had serious overfitting after outlier fix
 
+## Phase 5 — Sentiment Analysis of Customer Feedback 
+
+**File:** `notebooks/05_nlp_complaints.ipynb`
+
+### What I did
+- Loaded 965 real customer reviews
+- Used VADER to classify each review as Positive, Neutral or Negative
+- Found most common positive and negative keywords
+- Generated business insights and recommendations
+
+### Results
+
+| Sentiment | Count | Percentage |
+|-----------|-------|------------|
+| Positive  | 610   | 63.2%      |
+| Neutral   | 119   | 12.3%      |
+| Negative  | 236   | 24.5%      |
+
+Average sentiment score: 0.234 (overall positive)
+
+### Key findings
+- Most customers are happy with the experience
+- Biggest complaint is slow service (103 reviews)
+- Refund process needs improvement (56 reviews)
+- Easy to use and good quality are most praised
+
+### Charts
+![Sentiment Distribution](images/sentiment_distribution.png)
+![Keywords](images/sentiment_keywords.png)
+
