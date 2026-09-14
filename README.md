@@ -1,6 +1,18 @@
 
 # Retail analytics capstone project
 
+## 🚀 Live Demo
+
+The app is deployed and live on Render:
+
+| Link | Description |
+|------|-------------|
+| [Dashboard](https://retail-customer-analytics-48n8.onrender.com/dashboard) | Interactive dashboard |
+| [API Docs](https://retail-customer-analytics-48n8.onrender.com/docs) | Swagger API documentation |
+| [Health Check](https://retail-customer-analytics-48n8.onrender.com/health) | Check if API is running |
+
+> **Note:** First load may take 30-60 seconds if the app has been inactive (free tier spins down after inactivity)
+
 # Retail Customer Analytics
 ---
 
