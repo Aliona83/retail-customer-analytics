@@ -385,13 +385,13 @@ All models used the same 9 features and the same
 
 ### Final comparison — all 5 models together
 
-| Model | Test AUC | Sensitivity | Specificity | Overfitting? |
-|-------|----------|-------------|-------------|--------------|
-| Logistic Regression | 0.637 | 0.566 | 0.647 | No  |
-| Naive Bayes | 0.627 | 0.370 | 0.781 | No  |
-| Random Forest | **0.668** | 0.203 | 0.976 | No  |
-| SVM | 0.638 | 0.338 | 0.860 | Slight  |
-| XGBoost | 0.661 | 0.331 | 0.879 | No  |
+| Model                       | Test AUC  | Sensitivity | Specificity | Overfitting? |
+| Logistic Regression         | 0.637     | 0.566       | 0.647       | No           |
+| Recoded Logistic Regression | 0.660     | -           | -           | No           |  
+| Naive Bayes                 | 0.627     | 0.370       | 0.781       | No           |
+| Random Forest               | **0.668** | 0.203       | 0.976       | No           |
+| SVM                         | 0.638     | 0.338       | 0.860       | Slight       |
+| XGBoost                     | 0.661     | 0.331       | 0.879       | No           |
 
 ### Charts
 
